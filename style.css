@@ -21,7 +21,7 @@ html {
 .books-section {
     height: 100%;
     background-color: aqua;
-    padding: 40px 20px;
+    padding: 40px 8%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

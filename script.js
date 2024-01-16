@@ -1,4 +1,5 @@
 const myLibrary = [];
+const booksSection = document.querySelector('.books-section');
 
 function Book(title, author, pages, haveRead){
     this.title = title;
@@ -26,5 +27,10 @@ function addBookToLibrary(book) {
 function displayBooks(bookLibrary) {
     for (const book of bookLibrary) {
         console.log(book);
+        const bookCard = document.createElement('div');
+        bookCard.textContent = book.info();
+        bookCard.classList.add('book-card');
+        booksSection.appendChild(bookCard);
     }
-}
+} 
+displayBooks(myLibrary);
