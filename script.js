@@ -2,10 +2,7 @@ const myLibrary = [];
 const booksSection = document.querySelector('.books-section');
 const addBookBtn = document.querySelector('#add-book-btn');
 const bookDialog = document.querySelector('#add-book-dialog');
-const bookTitle = document.querySelector('#title');
-const bookAuthor = document.querySelector('#author');
-const bookPages = document.querySelector('#pages');
-const readBookBtn = document.querySelector('#have-read-btn');
+const bookForm = document.querySelector('.add-book-form');
 const submitBtn = document.getElementById('submit-btn');
 
 
@@ -20,12 +17,12 @@ function Book(title, author, pages, haveRead){
 }
 
 //Code for visualizing
-const firstBook = new Book('Lord of the rings', 'J.R.R Martin', 900, 'Have read');
-const secondBook = new Book('Aragorn', 'Some kid', 500, 'Have read');
+// const firstBook = new Book('Lord of the rings', 'J.R.R Martin', 900, 'Have read');
+// const secondBook = new Book('Aragorn', 'Some kid', 500, 'Have read');
 
-addBookToLibrary(firstBook);
-addBookToLibrary(secondBook);
-console.log(myLibrary)
+// addBookToLibrary(firstBook);
+// addBookToLibrary(secondBook);
+// console.log(myLibrary)
 
 
 function addBookToLibrary(book) {
@@ -41,9 +38,22 @@ function displayBooks(bookLibrary) {
         booksSection.appendChild(bookCard);
     }
 } 
-displayBooks(myLibrary);
 
 //Display dialog
 addBookBtn.addEventListener('click', () => {
     bookDialog.showModal();
 });
+
+//Fetch form data
+bookForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const bookTitle = document.querySelector('#title').value;
+    const bookAuthor = document.querySelector('#author').value;
+    const bookPages = document.querySelector('#pages').value;
+    const readBookBtn = document.querySelector('#have-read-btn').value;
+
+    const newBook = new Book(bookTitle, bookAuthor, bookPages, readBookBtn);
+    addBookToLibrary(newBook);
+    displayBooks(myLibrary);
+})

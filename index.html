@@ -15,13 +15,14 @@
         <button id="add-book-btn">+ Add Book</button>
     </div>
     <dialog id="add-book-dialog">
-        <form action="" class="add-book-form" method="dialog">
+        <form action="script.js" class="add-book-form" method="dialog">
             <h3>Add new book</h3>
-            <input type="text" id="title" placeholder="Title">
-            <input type="text" id="author" placeholder="Author">
-            <input type="number" id="pages" placeholder="Number of pages">
+            <input type="text" id="title" name="title" placeholder="Title">
+            <input type="text" id="author" name="author" placeholder="Author">
+            <input type="number" id="pages" name="pages"
+            placeholder="Number of pages" min="0">
             <p>Did You read it?</p>
-            <input type="checkbox" id="have-read-btn">
+            <input type="checkbox" id="have-read-btn" name="have-read-btn">
             <button id="submit-btn">Submit</button>            
         </form>
     </dialog>
