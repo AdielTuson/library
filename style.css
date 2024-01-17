@@ -13,9 +13,28 @@ html {
     font-family: 'poppins', Arial, Helvetica, sans-serif;
 }
 
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+}
+
 .header {
     padding: 20px;
     font-size: 1.2rem;
+}
+
+.add-books-section{
+    text-align: center;
+    padding: 40px;
+}
+
+#add-book-btn {
+    font-size: 1.35rem;
+    font-weight: bold;
+    padding: 5px 30px;
 }
 
 .books-section {
@@ -39,4 +58,5 @@ html {
     gap: 30px;
     text-align: center;
     border: 2px solid black;
+    width:400px;
 }
