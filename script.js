@@ -22,7 +22,7 @@ function Book(title, author, pages, haveRead){
 
 // addBookToLibrary(firstBook);
 // addBookToLibrary(secondBook);
-// console.log(myLibrary)
+// console.log(myLibrary);
 
 
 function addBookToLibrary(book) {
@@ -33,7 +33,18 @@ function displayBooks(bookLibrary) {
     for (const book of bookLibrary) {
         console.log(book);
         const bookCard = document.createElement('div');
-        bookCard.textContent = book.info();
+        const titleParagraph = document.createElement('p');
+        const authorParagraph = document.createElement('p');
+        const pagesParagraph = document.createElement('p');
+
+        titleParagraph.textContent = book.title;
+        authorParagraph.textContent = book.author;
+        pagesParagraph.textContent = book.pages;
+
+        bookCard.appendChild(titleParagraph);
+        bookCard.appendChild(authorParagraph);
+        bookCard.appendChild(pagesParagraph);
+
         bookCard.classList.add('book-card');
         booksSection.appendChild(bookCard);
     }
@@ -56,4 +67,6 @@ bookForm.addEventListener('submit', (e) => {
     const newBook = new Book(bookTitle, bookAuthor, bookPages, readBookBtn);
     addBookToLibrary(newBook);
     displayBooks(myLibrary);
+
+    bookDialog.close();
 })
