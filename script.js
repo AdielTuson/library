@@ -1,5 +1,13 @@
 const myLibrary = [];
 const booksSection = document.querySelector('.books-section');
+const addBookBtn = document.querySelector('#add-book-btn');
+const bookDialog = document.querySelector('#add-book-dialog');
+const bookTitle = document.querySelector('#title');
+const bookAuthor = document.querySelector('#author');
+const bookPages = document.querySelector('#pages');
+const readBookBtn = document.querySelector('#have-read-btn');
+const submitBtn = document.getElementById('submit-btn');
+
 
 function Book(title, author, pages, haveRead){
     this.title = title;
@@ -34,3 +42,8 @@ function displayBooks(bookLibrary) {
     }
 } 
 displayBooks(myLibrary);
+
+//Display dialog
+addBookBtn.addEventListener('click', () => {
+    bookDialog.showModal();
+});
