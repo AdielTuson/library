@@ -16,20 +16,16 @@ function Book(title, author, pages, haveRead){
     }
 }
 
-//Code for visualizing
-// const firstBook = new Book('Lord of the rings', 'J.R.R Martin', 900, 'Have read');
-// const secondBook = new Book('Aragorn', 'Some kid', 500, 'Have read');
-
-// addBookToLibrary(firstBook);
-// addBookToLibrary(secondBook);
-// console.log(myLibrary);
-
-
 function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
+function resetBookSection() {
+    booksSection.textContent = '';
+}
+
 function displayBooks(bookLibrary) {
+    resetBookSection();
     for (const book of bookLibrary) {
         console.log(book);
         const bookCard = document.createElement('div');
@@ -56,7 +52,7 @@ addBookBtn.addEventListener('click', () => {
 });
 
 //Fetch form data
-bookForm.addEventListener('submit', (e) => {
+submitBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     const bookTitle = document.querySelector('#title').value;
@@ -67,6 +63,5 @@ bookForm.addEventListener('submit', (e) => {
     const newBook = new Book(bookTitle, bookAuthor, bookPages, readBookBtn);
     addBookToLibrary(newBook);
     displayBooks(myLibrary);
-
     bookDialog.close();
 })
