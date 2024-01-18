@@ -32,14 +32,27 @@ function displayBooks(bookLibrary) {
         const titleParagraph = document.createElement('p');
         const authorParagraph = document.createElement('p');
         const pagesParagraph = document.createElement('p');
+        const readBookBtn = document.createElement('button');
+
         
         titleParagraph.textContent = book.title;
         authorParagraph.textContent = book.author;
         pagesParagraph.textContent = book.pages;
+        readBookBtn.value = book.haveRead;
+
+        console.log(readBookBtn.value)
+        if(readBookBtn.value === 'true') {
+            readBookBtn.textContent = 'Read';
+        }
+
+        else {
+            readBookBtn.textContent = 'Not Read';
+        }
 
         bookCard.appendChild(titleParagraph);
         bookCard.appendChild(authorParagraph);
         bookCard.appendChild(pagesParagraph);
+        bookCard.appendChild(readBookBtn);
 
         bookCard.classList.add('book-card');
         booksSection.appendChild(bookCard);
@@ -58,8 +71,9 @@ bookForm.addEventListener('submit', (e) => {
     const bookTitle = document.querySelector('#title').value;
     const bookAuthor = document.querySelector('#author').value;
     const bookPages = document.querySelector('#pages').value;
-    const readBookBtn = document.querySelector('#have-read-btn').value;
+    const readBookBtn = document.querySelector('#have-read-btn').checked;
 
+    console.log(readBookBtn)
     const newBook = new Book(bookTitle, bookAuthor, bookPages, readBookBtn);
     addBookToLibrary(newBook);
     displayBooks(myLibrary);
