@@ -32,7 +32,7 @@ function displayBooks(bookLibrary) {
         const titleParagraph = document.createElement('p');
         const authorParagraph = document.createElement('p');
         const pagesParagraph = document.createElement('p');
-
+        
         titleParagraph.textContent = book.title;
         authorParagraph.textContent = book.author;
         pagesParagraph.textContent = book.pages;
@@ -52,7 +52,7 @@ addBookBtn.addEventListener('click', () => {
 });
 
 //Fetch form data
-submitBtn.addEventListener('click', (e) => {
+bookForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const bookTitle = document.querySelector('#title').value;

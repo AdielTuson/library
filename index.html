@@ -17,13 +17,15 @@
     <dialog id="add-book-dialog">
         <form action="script.js" class="add-book-form" method="dialog">
             <h3>Add new book</h3>
-            <input type="text" id="title" name="title" placeholder="Title">
-            <input type="text" id="author" name="author" placeholder="Author">
+            <input type="text" id="title" name="title"
+            placeholder="Title" required>
+            <input type="text" id="author" name="author"
+            placeholder="Author" required>
             <input type="number" id="pages" name="pages"
-            placeholder="Number of pages" min="0">
+            placeholder="Number of pages" min="0" required>
             <p>Did You read it?</p>
             <input type="checkbox" id="have-read-btn" name="have-read-btn">
-            <button id="submit-btn">Submit</button>            
+            <button type="submit" id="submit-btn">Submit</button>            
         </form>
     </dialog>
     <div class="books-section">
