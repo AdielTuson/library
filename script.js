@@ -49,20 +49,9 @@ function displayBooks() {
             console.log(book.haveRead)
 
 
-        readBookBtn.addEventListener('click', () => {
-            book.toggleRead(book.haveRead);
-        })
-
-        if(book.haveRead === true) {
-            readBookBtn.textContent = 'Read';
-            readBookBtn.style.backgroundColor = 'green';
-        }
-
-        else {
-            readBookBtn.textContent = 'Not Read';
-            readBookBtn.style.backgroundColor = 'red';
-        }
-
+        toggleReadBtn(readBookBtn, book);
+        updateReadBookBtn(readBookBtn,book);
+        
         
         bookCard.appendChild(titleParagraph);
         bookCard.appendChild(authorParagraph);
@@ -75,24 +64,41 @@ function displayBooks() {
 
         //Give each book it's index in myLibrary to enable it's deletion
         book.libraryIndex = index;
-        removeBookBtn.addEventListener('click', () => {
-            removeBookFromLibrary(book.libraryIndex);
-        });
+        clickRemoveBook(removeBookBtn, book);
 
         index++;
     }
 } 
-
+// Add a toggle read function to book prototype
 Book.prototype.toggleRead = function() {
-    if (this.haveRead === true) {
-        this.haveRead = false;
+    this.haveRead = !this.haveRead;
+    displayBooks();
+}
+
+//Will check for an event listener on toggle read book button
+function toggleReadBtn(button, book) {
+    button.addEventListener('click', () => {
+        book.toggleRead(book.haveRead);
+    });
+}
+
+//Will check for an event listener on remove book button
+function clickRemoveBook(button, book){
+    button.addEventListener('click', () => {
+        removeBookFromLibrary(book.libraryIndex);
+    });
+}
+
+function updateReadBookBtn(button, book) {
+    if(book.haveRead === true) {
+        button.textContent = 'Read';
+        button.style.backgroundColor = 'green';
     }
 
     else {
-        this.haveRead = true;
+        button.textContent = 'Not Read';
+        button.style.backgroundColor = 'red';
     }
-    console.log(this.haveRead);
-    displayBooks();
 }
 
 //Display dialog
