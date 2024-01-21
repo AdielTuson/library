@@ -22,7 +22,7 @@ function addBookToLibrary(book) {
 
 function removeBookFromLibrary(bookIndex) {
     myLibrary.splice(bookIndex, 1);
-    displayBooks(myLibrary);
+    displayBooks();
 }
 
 function resetBookSection() {
@@ -45,18 +45,25 @@ function displayBooks() {
         titleParagraph.textContent = book.title;
         authorParagraph.textContent = book.author;
         pagesParagraph.textContent = book.pages;
-        readBookBtn.value = book.haveRead;
         removeBookBtn.textContent = 'Remove';
-        
+            console.log(book.haveRead)
 
-        if(readBookBtn.value === 'true') {
+
+        readBookBtn.addEventListener('click', () => {
+            book.toggleRead(book.haveRead);
+        })
+
+        if(book.haveRead === true) {
             readBookBtn.textContent = 'Read';
+            readBookBtn.style.backgroundColor = 'green';
         }
 
         else {
             readBookBtn.textContent = 'Not Read';
+            readBookBtn.style.backgroundColor = 'red';
         }
 
+        
         bookCard.appendChild(titleParagraph);
         bookCard.appendChild(authorParagraph);
         bookCard.appendChild(pagesParagraph);
@@ -76,6 +83,18 @@ function displayBooks() {
     }
 } 
 
+Book.prototype.toggleRead = function() {
+    if (this.haveRead === true) {
+        this.haveRead = false;
+    }
+
+    else {
+        this.haveRead = true;
+    }
+    console.log(this.haveRead);
+    displayBooks();
+}
+
 //Display dialog
 addBookBtn.addEventListener('click', () => {
     bookDialog.showModal();
@@ -89,7 +108,7 @@ bookForm.addEventListener('submit', (e) => {
     const bookAuthor = document.querySelector('#author').value;
     const bookPages = document.querySelector('#pages').value;
     const readBookBtn = document.querySelector('#have-read-btn').checked;
-
+        console.log(readBookBtn);
     const newBook = new Book(bookTitle, bookAuthor, bookPages, readBookBtn);
 
     addBookToLibrary(newBook);
