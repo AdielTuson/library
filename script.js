@@ -20,27 +20,35 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 }
 
+function removeBookFromLibrary(bookIndex) {
+    myLibrary.splice(bookIndex, 1);
+    displayBooks(myLibrary);
+}
+
 function resetBookSection() {
     booksSection.textContent = '';
 }
 
-function displayBooks(bookLibrary) {
+function displayBooks() {
     resetBookSection();
-    for (const book of bookLibrary) {
+    let index = 0;
+    for (const book of myLibrary) {
         console.log(book);
         const bookCard = document.createElement('div');
         const titleParagraph = document.createElement('p');
         const authorParagraph = document.createElement('p');
         const pagesParagraph = document.createElement('p');
         const readBookBtn = document.createElement('button');
+        const removeBookBtn = document.createElement('button');
 
-        
+
         titleParagraph.textContent = book.title;
         authorParagraph.textContent = book.author;
         pagesParagraph.textContent = book.pages;
         readBookBtn.value = book.haveRead;
+        removeBookBtn.textContent = 'Remove';
+        
 
-        console.log(readBookBtn.value)
         if(readBookBtn.value === 'true') {
             readBookBtn.textContent = 'Read';
         }
@@ -53,9 +61,18 @@ function displayBooks(bookLibrary) {
         bookCard.appendChild(authorParagraph);
         bookCard.appendChild(pagesParagraph);
         bookCard.appendChild(readBookBtn);
+        bookCard.appendChild(removeBookBtn)
 
         bookCard.classList.add('book-card');
         booksSection.appendChild(bookCard);
+
+        //Give each book it's index in myLibrary to enable it's deletion
+        book.libraryIndex = index;
+        removeBookBtn.addEventListener('click', () => {
+            removeBookFromLibrary(book.libraryIndex);
+        });
+
+        index++;
     }
 } 
 
@@ -73,8 +90,8 @@ bookForm.addEventListener('submit', (e) => {
     const bookPages = document.querySelector('#pages').value;
     const readBookBtn = document.querySelector('#have-read-btn').checked;
 
-    console.log(readBookBtn)
     const newBook = new Book(bookTitle, bookAuthor, bookPages, readBookBtn);
+
     addBookToLibrary(newBook);
     displayBooks(myLibrary);
     bookDialog.close();
