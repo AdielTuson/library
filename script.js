@@ -4,7 +4,7 @@ const addBookBtn = document.querySelector('#add-book-btn');
 const bookDialog = document.querySelector('#add-book-dialog');
 const bookForm = document.querySelector('.add-book-form');
 const submitBtn = document.getElementById('submit-btn');
-
+const closeFormBtn = document.querySelector('.close-form-btn');
 
 function Book(title, author, pages, haveRead){
     this.title = title;
@@ -33,7 +33,6 @@ function displayBooks() {
     resetBookSection();
     let index = 0;
     for (const book of myLibrary) {
-        console.log(book);
         const bookCard = document.createElement('div');
         const titleParagraph = document.createElement('p');
         const authorParagraph = document.createElement('p');
@@ -46,7 +45,6 @@ function displayBooks() {
         authorParagraph.textContent = book.author;
         pagesParagraph.textContent = book.pages;
         removeBookBtn.textContent = 'Remove';
-            console.log(book.haveRead)
 
 
         toggleReadBtn(readBookBtn, book);
@@ -114,10 +112,14 @@ bookForm.addEventListener('submit', (e) => {
     const bookAuthor = document.querySelector('#author').value;
     const bookPages = document.querySelector('#pages').value;
     const readBookBtn = document.querySelector('#have-read-btn').checked;
-        console.log(readBookBtn);
     const newBook = new Book(bookTitle, bookAuthor, bookPages, readBookBtn);
 
     addBookToLibrary(newBook);
     displayBooks(myLibrary);
+    bookDialog.close();
+    bookForm.reset();
+})
+
+closeFormBtn.addEventListener('click', ()=> {
     bookDialog.close();
 })
