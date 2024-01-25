@@ -25,6 +25,10 @@ textarea {
   font-size: 100%;
 }
 
+button {
+    cursor: pointer;
+}
+
 body {
     background-color: var(--main-bg-color);
 }
@@ -37,7 +41,7 @@ body {
 
 .add-books-section{
     text-align: center;
-    padding: 40px;
+    padding: 80px;
 }
 
 #add-book-btn {
@@ -112,11 +116,16 @@ body {
     width: 100%;
     font-size: 1.2rem;
     padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(130, 122, 122);
+}
+
+#submit-btn:hover {
+    background-color: rgb(243, 240, 238);
 }
 
 .books-section {
     height: 100%;
-    padding: 40px 8%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
