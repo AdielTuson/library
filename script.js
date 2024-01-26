@@ -5,6 +5,7 @@ const bookDialog = document.querySelector('#add-book-dialog');
 const bookForm = document.querySelector('.add-book-form');
 const submitBtn = document.getElementById('submit-btn');
 const closeFormBtn = document.querySelector('.close-form-btn');
+const notReadColor = getComputedStyle(document.documentElement).getPropertyValue('--not-read-color')
 
 function Book(title, author, pages, haveRead){
     this.title = title;
@@ -95,7 +96,7 @@ function updateReadBookBtn(button, book) {
 
     else {
         button.textContent = 'Not Read';
-        button.style.backgroundColor = 'red';
+        button.style.backgroundColor = notReadColor;
     }
 }
 
