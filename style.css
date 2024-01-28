@@ -127,11 +127,12 @@ body {
 
 .books-section {
     height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+    grid-auto-rows: 1fr;
+    justify-items: center;
     gap: 40px;
+    padding: 0px 40px 40px 40px;
 }
 
 .book-card {
@@ -139,12 +140,17 @@ body {
     font-size: 1.5rem;
     display: flex;
     flex-direction: column;
-    padding: 30px 60px;
+    padding: 30px;
     gap: 20px;
     text-align: center;
-    width:400px;
+    width:100%;
+    max-width: 450px;
     border-radius: 10px;
     overflow-wrap: break-word;
+}
+
+.book-card p {
+    flex: auto;
 }
 
 .book-card button {

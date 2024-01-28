@@ -19,11 +19,11 @@
             <h3>Add new book</h3>
             <button class="close-form-btn" type="reset"><img src="images/cancel-icon.svg" alt=""></button>
             <input type="text" id="title" name="title"
-            placeholder="Title" required autofocus>
+            placeholder="Title" required autofocus maxlength="50">
             <input type="text" id="author" name="author"
-            placeholder="Author" required>
+            placeholder="Author" required maxlength="50">
             <input type="number" id="pages" name="pages"
-            placeholder="Number of pages" min="0" required>
+            placeholder="Number of pages" min="0" required max="1000000">
             <p>Did You read it?</p>
             <input type="checkbox" id="have-read-btn" name="have-read-btn">
             <button type="submit" id="submit-btn">Submit</button>            

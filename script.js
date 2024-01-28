@@ -42,9 +42,9 @@ function displayBooks() {
         const removeBookBtn = document.createElement('button');
 
 
-        titleParagraph.textContent = book.title;
+        titleParagraph.textContent = `"${book.title}"`;
         authorParagraph.textContent = book.author;
-        pagesParagraph.textContent = book.pages;
+        pagesParagraph.textContent = book.pages + ' pages';
         removeBookBtn.textContent = 'Remove';
 
 
