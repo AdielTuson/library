@@ -5,7 +5,8 @@ const bookDialog = document.querySelector('#add-book-dialog');
 const bookForm = document.querySelector('.add-book-form');
 const submitBtn = document.getElementById('submit-btn');
 const closeFormBtn = document.querySelector('.close-form-btn');
-const notReadColor = getComputedStyle(document.documentElement).getPropertyValue('--not-read-color')
+const notReadColor = getComputedStyle(document.documentElement).getPropertyValue('--not-read-color');
+const readColor = getComputedStyle(document.documentElement).getPropertyValue('--read-color');
 
 function Book(title, author, pages, haveRead){
     this.title = title;
@@ -91,7 +92,7 @@ function clickRemoveBook(button, book){
 function updateReadBookBtn(button, book) {
     if(book.haveRead === true) {
         button.textContent = 'Read';
-        button.style.backgroundColor = 'green';
+        button.style.backgroundColor = readColor;
     }
 
     else {
